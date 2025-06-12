@@ -7,28 +7,33 @@ Official implementation of [Over-the-Air Learning-based Geometry Point Cloud Tra
 
 ## Data
 
-Download the point cloud data from Semantic-KiTTi [dataset](), following [](), we use the sequence 08, spilt it to training and test dataset (the first 3k as training, the remaining as test dataset). 
+Download the point cloud data from Semantic-KiTTi [dataset](https://semantic-kitti.org/dataset.html), following [Deep Compression for Dense Point Cloud Maps](https://github.com/PRBonn/deep-point-map-compression), we use the sequence 08, consisting of 4k point clouds.
+
+### Data prepropessing
+
+Put the downloaded Semantic-KITTI dataset into the `KITTI/` folder, then run the `data_nerf.py` to generate `*.npy` files under the `./data` folder. More precisely, we spilt the dataset to training and test dataset (the first 3k as training, the remaining as test dataset). The `data_nerf.py` file normalizes and then voxelizes the input `*.bin` files with a default voxel resolution, $V = 6$.
 
 ## Training
 
 To train a model, run
 
-```python main.py @config.txt```.
+```python main.py --test False```.
 
-See `config.txt` and `main.py` for setting various arguments. Note that if using wandb, you need to change the wandb entity and project name to your own.
+See `main.py` file for more hyper parameters, e.g., **inner_step** determines the encoder latency, while **latent_dim** determines bandwidth usage. 
 
-A few example configs used to train the models in the paper can be found in the `configs` folder.
+The model will be stored in the `wandb/` folder.
+
+
 
 
 #### Evaluation
 
-To evaluate the performance of a given modulation dataset (in terms of PSNR), run
+To evaluate the performance of a given setting
 
-```python evaluate.py --wandb_run_path <wandb_run_path> --modulation_dataset <modulation_dataset>```.
+```python main.py --wandb_run_path <wandb_run_path> --test True```.
 
-
-
+The readers can directly use the default parameter settings (testing mode) to achieve the same performances of the leftmost point of the green curves shown in Fig. 15 in the [paper](https://arxiv.org/abs/2306.08730). Download the checkpoint (`model.pt`) using [Google Drive](https://drive.google.com/file/d/1Y9SzK29sepB_76NrNrKVSnhyzxacLd3J/view?usp=drive_link), then place it to the folder indicated by **wandb_run_path** in `main.py` file. 
 
 ## Baselines
 
-The authors adopt the G-PCC baseline used in this [repo](https://github.com/NJUVISION/PCGCv2). More precisely, the authors 
+The authors adopt the G-PCC baseline used in this [repo](https://github.com/NJUVISION/PCGCv2).
