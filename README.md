@@ -27,7 +27,7 @@ Please refer to the readme.md file in the OTA-MetaNeRF folder.
 If you find this work useful in your research, please cite:
 
 ```bibtex
-@article{hdjscc,
+@article{ota-pct,
   title={Over-the-Air Learning-based Geometry Point Cloud Transmission},
   author={Bian, Chenghong and Shao, Yulin and Gunduz, Deniz},
   journal={IEEE Journal on Selected Areas in Communications},
