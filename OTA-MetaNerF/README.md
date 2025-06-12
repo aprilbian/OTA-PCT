@@ -44,24 +44,24 @@ The readers can directly use the default parameter settings (testing mode) to ac
   ├── wandb_utils.py
   ├── helpers.py
   ├── coinpp/ 
-  │ ├── losses.py
-  │ ├── metalearning.py
-  │ ├── ...
-  │ └── training.py
+    ├── losses.py
+    ├── metalearning.py
+    ├── ...
+    └── training.py
   
   ├── data/
-  │ ├── train
+    ├── train
         . `*.npy`
-  │ ├── test
+    ├── test
         . `*.npy`
-  │ ├── kitti.py      # precess the data
+    ├── kitti.py      # precess the data
 
   ├── KITTI/  
-  │ ├── 08
+    ├── 08
         . `*.bin`
 
-  ├── wandb/ # Pretrained weights (download separately) 
-  │ ├── run-*
+  ├── wandb/   # saved weights
+    ├── run-*
         ├── files
            ├── model.pt
            ├── ...
